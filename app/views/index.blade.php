@@ -37,7 +37,8 @@
         </div>
       </div>
       <div style="height:100px">
-        <a href="/oauth/twitter">Sign in with Twitter</a>
+        <a href="/oauth/twitter">Sign in with Twitter</a> <br>
+        <a href="/oauth/github">Sign in with Github</a>
       </div>
       <div class="row">
         <div class="col-md-8" ng-controller="products">
