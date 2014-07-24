@@ -17,11 +17,11 @@ class CreateAccountTable extends Migration {
       $table->engine = "InnoDB";
       
       $table->increments("id");
-      $table->string("email");
-      $table->string("password");
+      $table->string("email")->default('');
+      $table->string("password")->default('');
       $table->dateTime("created_at");
       $table->dateTime("updated_at");
-      $table->dateTime("deleted_at");
+      $table->dateTime("deleted_at")->nullable();
     });
 	}
 

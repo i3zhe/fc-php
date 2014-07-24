@@ -14,9 +14,9 @@ class AddNamesAvatarToAccount extends Migration {
 	{
 		Schema::table('account', function($table)
 		{
-	    $table->string('name', 50)->after('email');
-	    $table->string('nick_name', 50)->after('name');
-	    $table->string('avatar_url')->after('nick_name');
+	    $table->string('name', 50)->after('email')->default('');
+	    $table->string('nick_name', 50)->after('name')->default('');
+	    $table->string('avatar_url')->after('nick_name')->default('');
 		});
 	}
 

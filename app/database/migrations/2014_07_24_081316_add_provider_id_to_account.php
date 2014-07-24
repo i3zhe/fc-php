@@ -14,7 +14,7 @@ class AddProviderIdToAccount extends Migration {
 	{
 		Schema::table('account', function(Blueprint $table)
 		{
-			$table->string('provider_id')->after("password");
+			$table->string('provider_id')->after("password")->default('');
 		});
 	}
 
