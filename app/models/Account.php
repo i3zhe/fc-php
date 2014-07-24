@@ -5,9 +5,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Account
-extends Eloquent
-implements UserInterface, RemindableInterface
+class Account extends Eloquent implements UserInterface, RemindableInterface
 {
 
   use UserTrait, RemindableTrait;
@@ -16,6 +14,8 @@ implements UserInterface, RemindableInterface
   protected $hidden = ["password"];
   protected $guarded = ["id"];
   protected $softDelete = true;
+
+  protected $fillable = array('name', 'nick_name', 'email','avatar_url', 'provider_id');
 
   public function getAuthIdentifier()
   {
@@ -30,6 +30,26 @@ implements UserInterface, RemindableInterface
   public function getReminderEmail()
   {
     return $this->email;
+  }
+
+  public function getName()
+  {
+    return $this->name;
+  }
+
+  public function getNickName()
+  {
+    return $this->nick_name;
+  }
+
+  public function getAvatar()
+  {
+    return $this->avatar_url;
+  }
+
+  public function getProvider()
+  {
+    return $this->provider_id;
   }
 
   public function orders()
