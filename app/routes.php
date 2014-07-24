@@ -39,3 +39,10 @@ Route::any("/oauth/twitter", [
   "as"   => "/oauth/twitter",
   "uses" => "AccountController@loginWithTwitter"
 ]);
+
+Route::any("/oauth/github", [
+  "as"   => "/oauth/github",
+  "uses" => "AccountController@loginWithGithub"
+]);
+
+Route::controller('accounts', 'AccountController');
