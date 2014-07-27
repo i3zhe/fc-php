@@ -21,7 +21,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'model_config_path' => app('path') . '/config/packages/frozennode/administrator',
+	'model_config_path' => app('path') . '/config/packages/frozennode/administrator/models',
 
 	/**
 	 * The path to your settings config directory
@@ -52,11 +52,11 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
-	  'lottery_category',
-	  'lottery',
-	  'order',
-	  'bonus',
-	  'donation',
+	  'Category',
+	  'Lottery',
+	  // 'Order',
+	  // 'Bonus',
+	  // 'Donation',
 	  'Settings' => array('settings.site'),
 	  // 'Analytics' => array('E-Commerce' => 'page.ecommerce.analytics'),
 		),
