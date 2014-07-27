@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrderTable extends Migration {
+class CreateBonusTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,16 @@ class CreateOrderTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create("order", function($table) {
+		Schema::create('bonus', function(Blueprint $table)
+		{
 			$table->engine = "InnoDB";
 
 			$table->increments("id");
-			$table->integer("account_id");
-			$table->dateTime("created_at");
-			$table->dateTime("updated_at");
-			$table->dateTime("deleted_at")->default(null);
+			$table->float("amount");			
+
+			$table->integer('order_item_id');      
+
+			$table->timestamps();
 		});
 	}
 
@@ -30,7 +32,7 @@ class CreateOrderTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::dropIfExists("order");
+		Schema::dropIfExists("bonus");
 	}
 
 }
