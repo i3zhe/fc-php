@@ -52,8 +52,16 @@ class Account extends Eloquent implements UserInterface, RemindableInterface
     return $this->provider_id;
   }
 
+  public function isAdmin() {
+    return $this->is_admin;
+  }
+
   public function orders()
   {
     return $this->hasMany("Order");
+  }
+
+  public function donations() {
+    return $this->hasMany("Donation");
   }
 }

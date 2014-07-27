@@ -1,8 +1,7 @@
 <?php
-class Product
-extends Eloquent
+class Lottery extends Eloquent
 {
-  protected $table = "product";
+  protected $table = "lottery";
   protected $guarded = ["id"];
   protected $softDelete = true;
 

@@ -1,6 +1,5 @@
 <?php
-class OrderItem
-extends Eloquent
+class OrderItem extends Eloquent
 {
   protected $table = "order_item";
   protected $guarded = ["id"];

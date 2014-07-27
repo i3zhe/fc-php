@@ -1,15 +1,14 @@
 <?php
 
-class Category
-extends Eloquent
+class Category extends Eloquent
 {
-  protected $table = "category";
+  protected $table = "lottery_category";
   protected $guarded = ["id"];
   protected $softDelete = true;
   
-  public function products()
+  public function lotteries()
   {
-    return $this->hasMany("Product");
+    return $this->hasMany("Lottery");
   }
 }
 
