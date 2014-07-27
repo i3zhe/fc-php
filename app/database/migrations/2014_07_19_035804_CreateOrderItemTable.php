@@ -25,7 +25,7 @@ class CreateOrderItemTable extends Migration {
 
       $table->dateTime("created_at");
       $table->dateTime("updated_at");
-      $table->dateTime("deleted_at")->default(null);
+      $table->dateTime("deleted_at")->nullable()->default(null);
     });
 	}
 

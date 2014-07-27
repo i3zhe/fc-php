@@ -21,14 +21,13 @@ class CreateLotteryTable extends Migration {
 			$table->integer("price");
 			$table->integer("time_cycle")->default(0);
       $table->string("drawing_time")->default('');
-      $table->dateTime("last_drawing_time")->default(null);
+      $table->dateTime("last_drawing_time")->nullable()->default(null);
 			
-			$table->unsignedInteger('lottery_category_id');
-      $table->foreign('lottery_category_id')->references('id')->on('lottery_category');
+      $table->integer('category_id');
 
 			$table->dateTime("created_at");
       $table->dateTime("updated_at");
-      $table->dateTime("deleted_at")->default(null);
+      $table->dateTime("deleted_at")->nullable()->default(null);
 		});
 	}
 
