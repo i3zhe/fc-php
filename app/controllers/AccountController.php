@@ -19,6 +19,20 @@ class AccountController extends BaseController
     ]);
   }
 
+  public function loginAction() {
+    if (Auth::user()) {
+      echo Auth::user()->nick_name."<br>";
+
+      return View::make("dashboard");
+    }
+
+    return View::make("account.login");
+  }
+
+  public function logoutAction() {
+
+  }
+
   public function getIndex() {
     $accounts = Account::all();
 
@@ -89,7 +103,7 @@ class AccountController extends BaseController
         
         $provider_id = "Twitter_".$result['id_str'];
 
-        $account = Account::where('provider_id', '=', $provider_id);
+        $account = Account::where('provider_id', '=', $provider_id)->first();
 
         if (count($account->get()) == 0) {
           # TODO: ask user for email
@@ -103,10 +117,14 @@ class AccountController extends BaseController
             )
           );
 
+          $_SESSION['provider_id'] = $provider_id;
+          $_SESSION['user'] = $result['screen_name'];
         }
         
-        # TODO: sign in the registered user
-        
+        # sign in the registered user               
+        Auth::login($account);
+
+        return View::make('dashboard');
 
     }
     // if not ask for permission first
@@ -145,13 +163,14 @@ class AccountController extends BaseController
 
         $gravatar_url = "https://www.gravatar.com/avatar/" . $result['gravatar_id'] ."?size=60&default=wavatar";
 
-        $account = Account::where('provider_id', '=', $provider_id);
+        $account = Account::where('provider_id', '=', $provider_id)->first();
 
         if (count($account->get()) == 0) {
           # TODO: ask user for email
           $account = Account::create(
             array(
-              'id' => null,              
+              'id' => null,             
+              'name' => '', 
               'email' => $result['email'],
               'nick_name' => $result['login'],
               'provider_id' => $provider_id,
@@ -159,10 +178,14 @@ class AccountController extends BaseController
             )
           );
 
+          $_SESSION['provider_id'] = $provider_id;
+          $_SESSION['user'] = $result['email'];
         }
 
-        # TODO: sign in the registered user
-
+        # sign in the registered user
+        Auth::login($account);
+        
+        return View::make('dashboard');
     } 
     // if not ask for permission first
     else {
