@@ -104,8 +104,8 @@ class AccountController extends BaseController
         $provider_id = "Twitter_".$result['id_str'];
 
         $account = Account::where('provider_id', '=', $provider_id)->first();
-
-        if (count($account->get()) == 0) {
+        
+        if (empty($account)) {
           # TODO: ask user for email
           $account = Account::create(
             array(
@@ -121,7 +121,7 @@ class AccountController extends BaseController
           $_SESSION['user'] = $result['screen_name'];
         }
         
-        # sign in the registered user               
+        # sign in the registered user
         Auth::login($account);
 
         return View::make('dashboard');
@@ -165,7 +165,7 @@ class AccountController extends BaseController
 
         $account = Account::where('provider_id', '=', $provider_id)->first();
 
-        if (count($account->get()) == 0) {
+        if (empty($account)) {
           # TODO: ask user for email
           $account = Account::create(
             array(
